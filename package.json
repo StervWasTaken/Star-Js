@@ -2,6 +2,9 @@
   "name": "js-bot2",
   "version": "1.0.0",
   "main": "app.js",
+  "engines": {
+    "node": "15.x"
+  },
   "scripts": {
     "start": "node app.js",
     "nodemon": "nodemon app.js"
