@@ -1,0 +1,29 @@
+{
+  "name": "js-bot2",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "nodemon": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/opus": "^0.3.3",
+    "commando": "^0.0.2",
+    "discord.js": "^12.5.1",
+    "ffmpeg-static": "^4.2.7",
+    "fs": "^0.0.1-security",
+    "latest": "^0.2.0",
+    "mongoose": "^5.11.7",
+    "start": "^5.1.0",
+    "wokcommands": "^1.2.1",
+    "yt-search": "^2.5.1",
+    "ytdl-core": "^4.4.4"
+  },
+  "devDependencies": {
+    "nodemon": "^0.0.0-development"
+  },
+  "keywords": [],
+  "description": ""
+}

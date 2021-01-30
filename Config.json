@@ -1,0 +1,9 @@
+{
+     "prefix": "js!", 
+     "bot_age" : 1,
+     "words_array" : ["Hi", "Bye", "This is an array"],
+     "bot_info" : { 
+         "name" : "JS Bot",
+         "version" :1.0 
+     }
+}
