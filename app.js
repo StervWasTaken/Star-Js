@@ -1,7 +1,7 @@
 const path =require('path')
 const fs = require('fs');
 const Discord = require('discord.js');
-const token = require("./token.js");
+require('dotenv').config();
 const client = new Discord.Client();
 const welcome =require('./welcome');
 const command = require('./command');
@@ -9,9 +9,8 @@ const roleClaim = require('./role-claim');
 const poll = require('./poll');
 const advancedPolls = require('./advanced-polls');
 const memberCount =require('./counters/member-counter')
-const { badwords } = require("./data.json") 
 const antiSpam =require("./anti-spam")
-const { prefix, bot_age, words_array, bot_info, } =require('./Config.json')
+const { prefix, bot_age, words_array, bot_info, } =require('./Config.json');
 
 client.commands = new Discord.Collection();
 client.events = new Discord.Collection();
@@ -19,6 +18,16 @@ client.events = new Discord.Collection();
 ['command_handler', 'event_handler'].forEach(handler => {
   require(`./handlers/${handler}`)(client, Discord);
 })
+
+client.commands = new Discord.Collection();
+ 
+const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
+for(const file of commandFiles){
+    const command = require(`./commands/${file}`);
+ 
+    client.commands.set(command.name, command);
+}
+ 
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -49,11 +58,15 @@ client.on('ready', () => {
   readCommands('commands')
 });
 
+
+
 client.on('guildMemberAdd', guildMember =>{
   let welcomeRole = guildMember.guild.roles.cache.find(role => role.name === 'Member');
 
   guildMember.roles.add(welcomeRole);
 });
+
+
 
 command(client, 'members', (message) => {
   client.guilds.cache.forEach((guild) => {
@@ -68,6 +81,30 @@ client.on('message', msg => {
     msg.channel.send('Hi!')
   }
 });
+
+client.on('message', message =>{
+  if(!message.content.startsWith(prefix) || message.author.bot) return;
+
+  const args = message.content.slice(prefix.length).split(/ +/);
+  const command = args.shift().toLowerCase();
+
+  if(command === 'help'){
+      client.commands.get('help').execute(message, args);
+  }
+});
+
+client.on('message', message =>{
+  if(!message.content.startsWith(prefix) || message.author.bot) return;
+
+  const args = message.content.slice(prefix.length).split(/ +/);
+  const command = args.shift().toLowerCase();
+
+  if(command === 'admin'){
+      client.commands.get('admin').execute(message, args);
+  }
+});
+
+
 
 client.on('message', msg => {
   if (msg.content === `js!sdasa`) {
@@ -86,4 +123,4 @@ command(client, 'status', (message) => {
   })
 })
 
-client.login(token);
+client.login(process.env.DISCORD_TOKEN);

@@ -2,11 +2,14 @@ const ms = require('ms');
 module.exports = {
     name: 'mute',
     description: "This mutes a member",
+    permissions: "MANAGE_ROLES",
     execute(client, message, args) {
 
         
         const target = message.mentions.users.first();
         if (target) {
+
+            if(target.bot) return;
  
             let mainRole = message.guild.roles.cache.find(role => role.name === 'Member');
             let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
@@ -29,6 +32,9 @@ module.exports = {
             }, ms(args[1]));
         } else {
             message.channel.send('Cant find that member!');
+        }
+        if(!message.member.hasPermission("MANAGE_ROLES")) {
+            message.channel.send("You do not have permision to use this command")
         }
     }
 }

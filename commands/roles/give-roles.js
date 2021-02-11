@@ -3,6 +3,7 @@ module.exports = {
     minArgs: 2,
     expectedArgs: "<Target user's @> <The role name>",
     permissions: 'MANAGE_ROLES',
+    permissionsError: 'You do not the permission to use this command',
     callback: (message, arguments) => {
       const targetUser = message.mentions.users.first()
       if (!targetUser) {

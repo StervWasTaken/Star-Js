@@ -14,6 +14,10 @@ module.exports = {
         await message.channel.messages.fetch({ limit: args[0]}).then(messages =>{
             message.channel.bulkDelete(messages)
     });
+
+    if(!message.member.hasPermission('MANAGE_MESSAGES')){
+        message.channel.send('You do not have permsission to use this command')
+    }
  
  }
 }   
