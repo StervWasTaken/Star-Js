@@ -4,7 +4,7 @@ module.exports = {
     name: 'mcserver',
     description: 'get information about a minecraft server',
     aliases: ['mc', 'minecraft'],
-    async execute(client, message, args, Discord){
+    async execute(client, message, cmd, args, Discord){
         if(!args[0]) return message.channel.send('Please enter a minecraft server ip');
         if(!args[1]) return message.channel.send('Please enter a minecraft server port');
  

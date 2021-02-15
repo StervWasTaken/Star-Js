@@ -1,7 +1,8 @@
 module.exports = {
     name: 'user-info',
+    aliases: ['userInfo', 'info'],
     description: "Embeds!",
-    execute(client, message, args, Discord) {
+    execute(client, message, args, cmd, Discord) {
  
  
  

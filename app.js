@@ -10,6 +10,7 @@ const poll = require('./poll');
 const advancedPolls = require('./advanced-polls');
 const memberCount =require('./counters/member-counter')
 const antiSpam =require("./anti-spam")
+const { badwords } = require("./data.json")
 const { prefix, bot_age, words_array, bot_info, } =require('./Config.json');
 
 client.commands = new Discord.Collection();
@@ -65,6 +66,12 @@ client.on('guildMemberAdd', guildMember =>{
 
   guildMember.roles.add(welcomeRole);
 });
+
+client.on('message', message => {
+  if(message.content.includes(badwords)){
+    console.log(badwords)
+  }
+})
 
 
 

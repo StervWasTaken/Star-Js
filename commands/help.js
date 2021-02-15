@@ -8,13 +8,13 @@ module.exports = {
         .setColor('#ff0000')
         .setTitle("Help Menu")
         .setDescription("This is the help menu for the bot Star JS")
+        .setThumbnail('https://cdn.discordapp.com/avatars/777630825491333121/0e3273b3ec43f910cc3d2310eaf4b4e7.webp')
         .addFields(
             {name: 'js!help', value: 'Shows this menu'},
             {name: 'js!add, js!addition', value: 'Adds 2 numbers'},
-            {name: 'js!play', value: 'Plays music from the internet(for a specific video do js!play "your url here"'},
-            {name: 'js!leave', value: 'Leaves a voice channel'},
-            {name: 'js!queue', value: 'Coming soon...'},
-            {name: 'js!addqueue', value: 'Coming soon...'},
+            {name: 'js!play', value: 'Fixing bugs'},
+            {name: 'js!queue', value: 'Fixing Bugs'},
+            {name: 'js!stop', value: 'Fixing Bugs'},
             {name: 'js!user-info', value: 'Shows the info a person'},
             {name: 'js!serverInfo', value: 'Coming soon...'},
             {name: 'js!weather', value: 'Shows the weather of a place'},

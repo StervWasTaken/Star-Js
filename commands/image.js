@@ -9,7 +9,7 @@ const google = new Scraper({
 module.exports = {
     name: 'image',
     description: 'Gets images from google',
-    async execute(client, message, args){
+    async execute(client, message, cmd, args){
         const image_query = args.join(' ');
         if(!image_query) return message.channel.send('Please enter an image name');
 
