@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js")
 module.exports = {
     name: "help",
     description: "Shows the help menu",
-    async execute(client, message, args) {
+    async execute(client, message, cmd, args, Discord) {
         const newEmbed = new MessageEmbed()
         .setColor('#ff0000')
         .setTitle("Help Menu")
@@ -22,6 +22,9 @@ module.exports = {
             {name: 'js!avatar', value: 'Shows someone`s avatar'},
             {name: 'js!image', value: 'Searches an image from google'},
             {name: 'js!mcserver', value: 'Shows the status of a minecraft server'},
+            {name: 'js!bug', value: 'Reports a bug'},
+            {name: 'js!ticket', value: 'Creates a ticket to contact staff'},
+            {name: 'js!suggest', value: 'Puts a suggestion'},
 
         )
         .setFooter('Bot coded by Sterv#4436')

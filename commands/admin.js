@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js")
 
 module.exports = {
     name: "admin",
-    aliases: ['adminHelp'],
+    aliases: ['adminhelp'],
     description: "Shows the admin help menu",
     async execute(client, message, cmd, args, Discord) {
         let newEmbed = new MessageEmbed()
@@ -20,7 +20,7 @@ module.exports = {
             {name: 'js!unmute', value: 'Unmutes a member'},
             {name: 'js!addrole', value: 'Adds a role to a user'},
             {name: 'js!delrole', value: 'Removes a role from a user'},
-            {name: 'js!slowmode', value: 'Fixing bugs'},
+            {name: 'js!slowmode', value: 'Sets the slowmode for a channel'},
         )
         .setFooter('Bot coded by Sterv#4436')
         .setTimestamp()
