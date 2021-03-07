@@ -13,6 +13,8 @@ const memberCount =require('./counters/member-counter')
 const antiSpam =require("./anti-spam")
 const { badwords } = require("./data.json")
 const mongoose = require('mongoose')
+const verify = require('./verify')
+client.queue = new Map()
 const { prefix, bot_age, words_array, bot_info, } =require('./Config.json');
 
 client.commands = new Discord.Collection();
@@ -31,14 +33,6 @@ mongoose.connect(process.env.MONGODB_SRV, {
   console.log(err)
 })
 
-client.commands = new Discord.Collection();
- 
-const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
-for(const file of commandFiles){
-    const command = require(`./commands/${file}`);
- 
-    client.commands.set(command.name, command);
-}
 
 const sequelize = new Sequelize('database', 'username', 'password', {
 	host: 'localhost',
@@ -213,6 +207,12 @@ command(client, 'members', (message) => {
   })
 })
 
+process.on ('exit', code => {
+  console.log (`Whoa! Exit code ${code}, cleaning up...`);
+  // i.e. close database
+});
+
+
 client.on('message', msg => {
   if (msg.content === `hi`) {
     msg.channel.send('Hi!')
@@ -220,21 +220,55 @@ client.on('message', msg => {
 });
 
 client.on('message', msg => {
+  if (msg.content === `sc`) {
+    msg.channel.send('We all are the best we can be :)')
+  }
+});
+
+
+command(client, 'serverinfo', (message) => {
+    const { guild } = message
+
+    const icon = guild.iconURL()
+
+    const embed = new Discord.MessageEmbed()
+      .setTitle(`Server info for "${guild.name}"`)
+      .setThumbnail(icon)
+      .setColor("RED")
+      .addFields(
+        {
+            name: 'Owner',
+            value: guild.owner.user.tag,
+          },
+        {
+            name: 'ServerID',
+            value: guild.id,
+        },
+        {
+            name: 'Members',
+            value: guild.memberCount,
+          },
+        {
+            name:'Role Count',
+            value: guild.roles.size,
+        },
+        {
+          name: 'Region',
+          value: guild.region,
+        },
+        {
+          name: 'AFK Timeout',
+          value: guild.afkTimeout / 60,
+        }
+      )
+      message.channel.send(embed)
+    })
+
+client.on('message', msg => {
   if (msg.content === `js!sdasa`) {
     msg.channel.send('<@755810994739085414>')
   }
 });
 
-command(client, 'status', (message) => {
-  const content = message.content.replace('js!status ', '')
-  if(message.author.id !== "743453469947592746") return message.reply('You are not my owner.')
-  
-  client.user.setPresence({
-    activity: {
-      name: content,
-      type: 'WATCHING',
-    },
-  })
-})
 
 client.login(process.env.DISCORD_TOKEN);

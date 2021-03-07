@@ -11,7 +11,7 @@ module.exports = {
         util.status(args[0], {port: parseInt(args[1])}).then((response) =>{
             console.log(response);
             const embed = new Discord.MessageEmbed()
-            .setColor('#BFCDEB')
+            .setColor('GREEN')
             .setTitle('Mc server status')
             .addFields(
                 {name: 'Server IP', value: response.host},

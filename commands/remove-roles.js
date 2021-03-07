@@ -1,19 +1,16 @@
 module.exports = {
-    commands: ['removerole', 'delrole', 'deleterole'],
-    minArgs: 2,
-    expectedArgs: "<Target user's @> <The role name>",
-    permissions: 'MANAGE_ROLES',
-    permissionsError: 'You do not the permission to use this command',
-    callback: (message, arguments) => {
+  name: 'delrole',
+  aliases: ['removerole'],
+    async execute(client, message, cmd, args, Discord) {
       const targetUser = message.mentions.users.first()
       if (!targetUser) {
         message.reply('Please mention someone to remove the role from')
         return
       }
   
-      arguments.shift()
+      args.shift()
   
-      const roleName = arguments.join(' ')
+      const roleName = args.join(' ')
       const { guild } = message
   
       const role = guild.roles.cache.find((role) => {

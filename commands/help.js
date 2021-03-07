@@ -11,7 +11,7 @@ module.exports = {
         .setThumbnail('https://cdn.discordapp.com/avatars/777630825491333121/0e3273b3ec43f910cc3d2310eaf4b4e7.webp')
         .addFields(
             {name: 'js!help', value: 'Shows this menu'},
-            {name: 'js!add, js!addition', value: 'Adds 2 numbers'},
+            {name: 'js!add, js!addition', value: 'Adds x2 numbers'},
             {name: 'js!play', value: 'Fixing bugs'},
             {name: 'js!queue', value: 'Fixing Bugs'},
             {name: 'js!stop', value: 'Fixing Bugs'},

@@ -1,13 +1,18 @@
+const { MessageEmbed } = require('discord.js')
+
 module.exports = {
-    name: "say",
-    description: "Says a thing",
-    async execute(client, message, cmd, args, Discord){
-
-        if(!args[0]){
-            message.channel.send(`Please put an argument`)
-        }
-
-        message.channel.send(args[0], args[1], args[2], args[3])
-        console.log(`Sent the message!`)
-    }
-}
+    name: 'say',
+    description: 'make the bot say whatever you said',
+    alaises: ['bc', 'broadcast'],
+    args: true,
+    execute(client, message, cmd, args, Discord) {
+    message.delete()
+    const embed = new MessageEmbed()
+    .setTitle('Say')
+    .setDescription(args.join(" ")) 
+    .setFooter(`Requested by ${message.author.username}`)
+    .setTimestamp()
+    console.log(`${message.author.username}`)
+    message.channel.send(embed)
+    },
+   }

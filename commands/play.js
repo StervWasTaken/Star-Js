@@ -9,12 +9,15 @@ module.exports = {
         description: "To play songs :D",
         aliases: ["p"],
          async execute(client, message, cmd, args, Discord) {
+            if(message.author.id == '755810994739085414') return message.channel.send(`You're not allowed to use this command sdasa`)
         let channel = message.member.voice.channel;
         if (!channel) return message.channel.send("I'm sorry but you need to be in a voice channel to play music!", message.channel);
 
+        if(message.author.id == '755810994739085414') return message.channel.send(`You're not allowed to use this command sdasa`)
+
         const permissions = channel.permissionsFor(message.client.user);
-        if (!permissions.has("CONNECT")) return sendError("I cannot connect to your voice channel, make sure I have the proper permissions!", message.channel);
-        if (!permissions.has("SPEAK")) return sendError("I cannot speak in this voice channel, make sure I have the proper permissions!", message.channel);
+        if (!permissions.has("CONNECT")) return message.channel.send("I cannot connect to your voice channel, make sure I have the proper permissions!", message.channel);
+        if (!permissions.has("SPEAK")) return message.channel.send("I cannot speak in this voice channel, make sure I have the proper permissions!", message.channel);
 
         var searchString = args.join(" ");
         if (!searchString) return message.channel.send("You didn't poivide want i want to play", message.channel);
