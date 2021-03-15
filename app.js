@@ -12,6 +12,7 @@ const advancedPolls = require('./advanced-polls');
 const memberCount =require('./counters/member-counter')
 const antiSpam =require("./anti-spam")
 const { badwords } = require("./data.json")
+command.name = new Map();
 const mongoose = require('mongoose')
 const verify = require('./verify')
 client.queue = new Map()

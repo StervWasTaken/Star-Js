@@ -13,11 +13,13 @@
   "license": "ISC",
   "dependencies": {
     "@discordjs/opus": "^0.3.3",
+    "anime-images-api": "^1.0.23",
     "commando": "^0.0.2",
     "discord.js": "^12.5.1",
     "ffmpeg-static": "^4.2.7",
     "fs": "^0.0.1-security",
     "google-translate-api": "^2.3.0",
+    "got": "^9.6.0",
     "images-scraper": "^6.0.0",
     "latest": "^0.2.0",
     "lyrics-finder": "^21.7.0",
